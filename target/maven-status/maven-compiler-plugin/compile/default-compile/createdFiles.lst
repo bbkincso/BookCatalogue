@@ -1,9 +1,0 @@
-com/bookcatalogue/exception/BookException.class
-com/bookcatalogue/dto/Book.class
-com/bookcatalogue/BookCatalogueApplication.class
-com/bookcatalogue/exception/BookNotFoundException.class
-com/bookcatalogue/dao/BookRepository.class
-com/bookcatalogue/controllers/BookService.class
-com/bookcatalogue/SpringFoxConfig.class
-com/bookcatalogue/validation/ErrorMessages.class
-com/bookcatalogue/exception/BookExceptionHandler.class

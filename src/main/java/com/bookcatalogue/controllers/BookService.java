@@ -31,7 +31,7 @@ public class BookService {
 
 	//get all books with pagination options, and sort option
 	@RequestMapping("/books")
-	List<Book>sortAllBooks() {
+	List<Book>getAllBooks() {
 		List<Book> bookList = bookRepo.findAll();
 		return bookList;
 	}
@@ -90,14 +90,14 @@ public class BookService {
     }
 
 	@PutMapping("books/{id}")
-	public Book updateBook(@Valid @RequestBody Book book, @PathVariable("id") Long id)
+	public Book updateBookById(@Valid @RequestBody Book book, @PathVariable("id") Long id)
 	{
 		Optional<Book> savedBook = bookRepo.findById(id);
 		if(savedBook.isPresent()){
 			Book existingBook = savedBook.get();
-			existingBook.setAuthor(book.getAuthor());
-			existingBook.setTitle(book.getTitle());
-			existingBook.setIsbn(book.getIsbn());
+//			existingBook.setAuthor(book.getAuthor());
+//			existingBook.setTitle(book.getTitle());
+//			existingBook.setIsbn(book.getIsbn());
 			existingBook.setIsAvailable(book.getIsAvailable());
 			bookRepo.save(existingBook);
 			return existingBook;
