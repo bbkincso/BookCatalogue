@@ -14,7 +14,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class SpringFoxConfig {
 
     @Bean
-    public Docket api() {
+    public static Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())

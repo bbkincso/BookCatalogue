@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "books")
 @ApiModel(description = "Book model description")
-public class Book {
+public final class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

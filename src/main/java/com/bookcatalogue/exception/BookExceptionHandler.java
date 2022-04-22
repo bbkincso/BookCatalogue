@@ -11,7 +11,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @ControllerAdvice
-public class BookExceptionHandler {
+public final class BookExceptionHandler {
 
     @ExceptionHandler(value = {BookNotFoundException.class})
     public ResponseEntity<Object>

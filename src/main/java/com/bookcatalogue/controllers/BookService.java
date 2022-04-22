@@ -22,7 +22,7 @@ import java.util.Optional;
 public final class BookService {
 
     @Autowired
-    BookRepository bookRepo;
+    private BookRepository bookRepo;
 
 //  get all books with pagination options, and sort option
 	@RequestMapping("/books")
@@ -38,7 +38,7 @@ public final class BookService {
 		if (book.isPresent()) {
 			return book;
 		} else {
-			throw new BookNotFoundException("No book with id: "+ id);
+			throw new BookNotFoundException("No book with id: " + id);
 		}
     }
 
@@ -96,7 +96,7 @@ public final class BookService {
 			bookRepo.save(existingBook);
 			return existingBook;
 		} else {
-			throw new BookNotFoundException("No book with id: "+ id);
+			throw new BookNotFoundException("No book with id: " + id);
 		}
 	}
 
@@ -107,7 +107,7 @@ public final class BookService {
 			Book existingBook = book.get();
 			bookRepo.delete(existingBook);
 		} else {
-			throw new BookNotFoundException("No book with id: "+ id);
+			throw new BookNotFoundException("No book with id: " + id);
 		}
 	}
 }
