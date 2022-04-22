@@ -123,10 +123,11 @@ public class BookCatalogueIT {
 
         ResponseEntity<Void> response = restTemplate.exchange("http://localhost:8082/books/10",
                 HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+
         ResponseEntity<Void> response1 = restTemplate.exchange("http://localhost:8082/books/7",
                 HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response1.getStatusCode());
     }
 
 }
