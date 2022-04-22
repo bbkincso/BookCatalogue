@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @RestController
 @Service
-public class BookService {
+public final class BookService {
 
     @Autowired
     BookRepository bookRepo;
@@ -38,7 +38,7 @@ public class BookService {
 		if (book.isPresent()) {
 			return book;
 		} else {
-			throw new BookNotFoundException("No book with id: "+id);
+			throw new BookNotFoundException("No book with id: "+ id);
 		}
     }
 
@@ -49,8 +49,8 @@ public class BookService {
 		if (!bookList.isEmpty()) {
 			return bookList;
 		} else {
-			throw new BookNotFoundException("No book found from the author: "
-					+ author);
+			throw new BookNotFoundException("No book found from"
+					+ " the author: " + author);
 		}
 	}
 
@@ -61,8 +61,8 @@ public class BookService {
 		if (!bookList.isEmpty()) {
 			return bookList;
 		} else {
-			throw new BookNotFoundException("No book found with the title: "
-					+ title);
+			throw new BookNotFoundException("No book found with"
+					+ " the title: " + title);
 		}
 	}
 
@@ -73,14 +73,14 @@ public class BookService {
 		if (!bookList.isEmpty()) {
 			return bookList;
 		} else {
-			throw new BookNotFoundException("No book found with ISBN number: "
-					+ isbn);
+			throw new BookNotFoundException("No book found with"
+					+ " ISBN number: " + isbn);
 		}
 	}
 
     @PostMapping("/books")
     ResponseEntity<Book> createBook(@Valid @RequestBody Book book) {
-        Book savedBook=bookRepo.save(book);
+        Book savedBook = bookRepo.save(book);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedBook.getId()).toUri();
@@ -95,8 +95,8 @@ public class BookService {
 			existingBook.setIsAvailable(book.getIsAvailable());
 			bookRepo.save(existingBook);
 			return existingBook;
-		} else{
-			throw new BookNotFoundException("No book with id: "+id);
+		} else {
+			throw new BookNotFoundException("No book with id: "+ id);
 		}
 	}
 
@@ -107,7 +107,7 @@ public class BookService {
 			Book existingBook = book.get();
 			bookRepo.delete(existingBook);
 		} else {
-			throw new BookNotFoundException("No book with id: "+id);
+			throw new BookNotFoundException("No book with id: "+ id);
 		}
 	}
 }

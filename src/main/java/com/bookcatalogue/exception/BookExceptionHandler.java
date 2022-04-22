@@ -14,7 +14,8 @@ import java.time.ZonedDateTime;
 public class BookExceptionHandler {
 
     @ExceptionHandler(value = {BookNotFoundException.class})
-    public ResponseEntity<Object> handleBookNotFoundException(BookNotFoundException e) {
+    public ResponseEntity<Object>
+    handleBookNotFoundException(BookNotFoundException e) {
        BookException bookException = new BookException(
                e.getMessage(),
                HttpStatus.NOT_FOUND,
@@ -24,7 +25,8 @@ public class BookExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object>customValidationErrorHandling(MethodArgumentNotValidException e) {
+    public ResponseEntity<Object>
+    customValidationErrorHandling(MethodArgumentNotValidException e) {
         BookException bookException = new BookException(
                 "Validation Error " + e.getBindingResult().getFieldError().getDefaultMessage(),
                 HttpStatus.BAD_REQUEST,
@@ -34,7 +36,8 @@ public class BookExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object>handleGlobalException(Exception e, WebRequest request) {
+    public ResponseEntity<Object>
+    handleGlobalException(Exception e, WebRequest request) {
         BookException bookException = new BookException(
                 e.getMessage(),
                 HttpStatus.INTERNAL_SERVER_ERROR,

@@ -1,0 +1,9 @@
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/dto/Book.java
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/exception/BookException.java
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/SpringFoxConfig.java
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/controllers/BookService.java
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/BookCatalogueApplication.java
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/exception/BookExceptionHandler.java
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/dao/BookRepository.java
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/exception/BookNotFoundException.java
+/Users/bettinakincsobordas/Desktop/GitHub/BookCatalogue/src/main/java/com/bookcatalogue/validation/ErrorMessages.java

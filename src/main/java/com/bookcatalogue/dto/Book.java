@@ -35,51 +35,51 @@ public class Book {
     public Book() {
     }
 
-    public Book(String author, String title, String isbn, boolean isAvailable) {
-        this.author = author;
-        this.title = title;
-        this.isbn = isbn;
-        this.isAvailable = isAvailable;
+    public Book(String a, String t, String iNum, boolean av) {
+        this.author = a;
+        this.title = t;
+        this.isbn = iNum;
+        this.isAvailable = av;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long i) {
+        this.id = i;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthor(String a) {
+        this.author = a;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String t) {
+        this.title = t;
     }
 
     public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setIsbn(String iNum) {
+        this.isbn = iNum;
     }
 
     public boolean getIsAvailable() {
         return isAvailable;
     }
 
-    public void setIsAvailable(boolean available) {
-        isAvailable = available;
+    public void setIsAvailable(boolean av) {
+        isAvailable = av;
     }
 
     @Override
