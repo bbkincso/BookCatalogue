@@ -2,8 +2,6 @@ package com.bookcatalogue;
 
 import com.bookcatalogue.dto.Book;
 import org.json.JSONException;
-//import org.junit.Assert;
-//import org.junit.Test;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -36,13 +34,12 @@ public class BookCatalogueIT {
             "    }\r\n" +
             "]";
 
-//
-//    @Test
-//    public void getAllBooksTest() {
-//        ResponseEntity<List> bookList =	restTemplate.getForEntity("http://localhost:8082/books", List.class);
-//        assertEquals(HttpStatus.OK, bookList.getStatusCode());
-//        public static void assertNotNull(bookList);
-//    }
+
+    @Test
+    public void getAllBooksTest() {
+        ResponseEntity<List> bookList =	restTemplate.getForEntity("http://localhost:8082/books", List.class);
+        assertEquals(HttpStatus.OK, bookList.getStatusCode());
+    }
 
     @Test
     public void getBookByIdTest() throws JSONException {
@@ -84,67 +81,52 @@ public class BookCatalogueIT {
         JSONAssert.assertEquals(expected, myString1.getBody(), false);
     }
 
-//    @Test
-//    public void createBookTest() {
-//
-//        Book book1 = new Book("Douglas Adams", "And Another Thing", "9781401395216", true);
-////        Book book2 = new Book("Douglas Adams", "And Another Thing", "9781401395a", true);
-////        Book book3 = new Book("", "And Another Thing", "9781401395", true);
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        HttpEntity<Book> request1 = new HttpEntity<Book>(book1, headers);
-////        HttpEntity<Book> request2 = new HttpEntity<Book>(book2, headers);
-////        HttpEntity<Book> request3 = new HttpEntity<Book>(book3, headers);
-//
-//        ResponseEntity<String> response1 =	restTemplate.postForEntity("http://localhost:8082/books", request1, String.class);
-//        ResponseEntity<String> response2 =	restTemplate.postForEntity("http://localhost:8082/books", request2, String.class);
-//        ResponseEntity<String> response3 =	restTemplate.postForEntity("http://localhost:8082/books", request3, String.class);
-//
-//        assertEquals(HttpStatus.CREATED, response1.getStatusCode());
-//        assertEquals(HttpStatus.BAD_REQUEST, response2.getStatusCode());
-//        assertEquals(HttpStatus.BAD_REQUEST, response3.getStatusCode());
-//    }
+    @Test
+    public void createBookTest() {
 
-//    @Test
-//    public void updateBookByIdTest() {
-//
-//        String id = "7";
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        ResponseEntity<Book> book =restTemplate.getForEntity("http://localhost:8082/books/"+id, Book.class);
-//
-//        if(HttpStatus.OK == book.getStatusCode()){
-//            Book myBook = book.getBody();
-//            if (myBook.getIsAvailable()){
-//                myBook.setIsAvailable(false);
-//            } else {
-//                myBook.setIsAvailable(true);
-//            }
-//
-//            HttpEntity<Book> requestUpdate = new HttpEntity<Book>(myBook, headers);
-//            restTemplate.exchange("http://localhost:8082/books/"+id, HttpMethod.PUT, requestUpdate, Void.class);
-//
-//        } else {
-//            assertEquals(HttpStatus.NOT_FOUND, book.getStatusCode());
-//        }
-//    }
+        Book book1 = new Book("Douglas Adams", "And Another Thing", "9781401395216", true);
+        Book book2 = new Book("Douglas Adams", "And Another Thing", "9781401395a", true);
+        Book book3 = new Book("", "And Another Thing", "9781401395", true);
+
+        ResponseEntity<String> response1 =	restTemplate.postForEntity("http://localhost:8082/books", book1, String.class);
+        ResponseEntity<String> response2 =	restTemplate.postForEntity("http://localhost:8082/books", book2, String.class);
+        ResponseEntity<String> response3 =	restTemplate.postForEntity("http://localhost:8082/books", book3, String.class);
+
+        assertEquals(HttpStatus.CREATED, response1.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, response2.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, response3.getStatusCode());
+    }
+
+    @Test
+    public void updateBookByIdTest() {
+
+        Book book1 = new Book("Douglas Adams", "And Another Thing", "9781401395216", false);
+        Book book2 = new Book("", "", "", false);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<Book> requestUpdate = new HttpEntity<Book>(book1, headers);
+        HttpEntity<Book> requestUpdate2 = new HttpEntity<Book>(book2, headers);
+        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8082/books/1",
+                HttpMethod.PUT, requestUpdate, String.class);
+        ResponseEntity<String> response2 = restTemplate.exchange("http://localhost:8082/books/1",
+                HttpMethod.PUT, requestUpdate2, String.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, response2.getStatusCode());
+
+
+    }
 
     @Test
     public void deleteBookByIdTest() {
 
-        String id = "8";
-
-        ResponseEntity<String> myString =restTemplate.getForEntity("http://localhost:8082/books/"+id, String.class);
-
-        if(HttpStatus.OK == myString.getStatusCode()){
-            restTemplate.delete("http://localhost:8082/books/"+id);
-
-        } else {
-            assertEquals(HttpStatus.NOT_FOUND, myString.getStatusCode());
-        }
+        ResponseEntity<Void> response = restTemplate.exchange("http://localhost:8082/books/10",
+                HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
+        ResponseEntity<Void> response1 = restTemplate.exchange("http://localhost:8082/books/7",
+                HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
 }
