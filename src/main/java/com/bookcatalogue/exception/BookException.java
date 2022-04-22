@@ -8,8 +8,8 @@ public final class BookException {
     private final HttpStatus httpStatus;
     private final ZonedDateTime timestamp;
 
-    public BookException(String m, HttpStatus s,
-                         ZonedDateTime t) {
+    public BookException(final String m, final HttpStatus s,
+                         final ZonedDateTime t) {
         this.message = m;
         this.httpStatus = s;
         this.timestamp = t;

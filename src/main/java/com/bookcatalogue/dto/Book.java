@@ -35,7 +35,7 @@ public final class Book {
     public Book() {
     }
 
-    public Book(String a, String t, String iNum, boolean av) {
+    public Book(final String a, final String t, final String iNum, final boolean av) {
         this.author = a;
         this.title = t;
         this.isbn = iNum;
@@ -54,7 +54,7 @@ public final class Book {
         return author;
     }
 
-    public void setAuthor(String a) {
+    public void setAuthor(final String a) {
         this.author = a;
     }
 
@@ -62,7 +62,7 @@ public final class Book {
         return title;
     }
 
-    public void setTitle(String t) {
+    public void setTitle(final String t) {
         this.title = t;
     }
 
@@ -70,7 +70,7 @@ public final class Book {
         return isbn;
     }
 
-    public void setIsbn(String iNum) {
+    public void setIsbn(final String iNum) {
         this.isbn = iNum;
     }
 
@@ -78,7 +78,7 @@ public final class Book {
         return isAvailable;
     }
 
-    public void setIsAvailable(boolean av) {
+    public void setIsAvailable(final boolean av) {
         isAvailable = av;
     }
 

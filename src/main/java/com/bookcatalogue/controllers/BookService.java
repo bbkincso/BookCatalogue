@@ -33,18 +33,20 @@ public final class BookService {
 
 //	get book by id
     @RequestMapping("/books/{id}")
-    Optional<Book> getBookById(@PathVariable("id") Long id) {
+    Optional<Book> getBookById(@PathVariable("id") final Long id) {
 		Optional<Book> book = bookRepo.findById(id);
 		if (book.isPresent()) {
 			return book;
 		} else {
-			throw new BookNotFoundException("No book with id: " + id);
+			throw new BookNotFoundException("No book with id: "
+					+ id);
 		}
     }
 
 //	get books by author
 	@RequestMapping("/books/authors/{author}")
-	List<Book> findBooksByAuthor(@PathVariable("author") String author) {
+	List<Book> findBooksByAuthor(@PathVariable("author")
+								 final String author) {
 		List<Book> bookList = bookRepo.findByAuthor(author);
 		if (!bookList.isEmpty()) {
 			return bookList;
@@ -56,7 +58,8 @@ public final class BookService {
 
 //	get books by title
 	@RequestMapping("/books/titles/{title}")
-	List<Book> findBooksByTitle(@PathVariable("title") String title) {
+	List<Book> findBooksByTitle(@PathVariable("title")
+								final String title) {
 		List<Book> bookList = bookRepo.findByTitle(title);
 		if (!bookList.isEmpty()) {
 			return bookList;
@@ -68,7 +71,8 @@ public final class BookService {
 
 //	get books by ISBN number
 	@RequestMapping("/books/isbn/{isbn}")
-	List<Book> findBookByIsbn(@PathVariable("isbn") String isbn) {
+	List<Book> findBookByIsbn(@PathVariable("isbn")
+							  final String isbn) {
 		List<Book> bookList = bookRepo.findByIsbn(isbn);
 		if (!bookList.isEmpty()) {
 			return bookList;
@@ -88,7 +92,8 @@ public final class BookService {
     }
 
 	@PutMapping("books/{id}")
-	public Book updateBookById(@Valid @RequestBody Book book, @PathVariable("id") Long id) {
+	public Book updateBookById(@Valid @RequestBody Book book,
+							   @PathVariable("id") final Long id) {
 		Optional<Book> savedBook = bookRepo.findById(id);
 		if (savedBook.isPresent()) {
 			Book existingBook = savedBook.get();
@@ -96,18 +101,20 @@ public final class BookService {
 			bookRepo.save(existingBook);
 			return existingBook;
 		} else {
-			throw new BookNotFoundException("No book with id: " + id);
+			throw new BookNotFoundException("No book with id: "
+					+ id);
 		}
 	}
 
     @DeleteMapping("/books/{id}")
-	void deleteBookById(@PathVariable Long id) {
+	void deleteBookById(@PathVariable final Long id) {
 		Optional<Book> book = bookRepo.findById(id);
 		if (book.isPresent()) {
 			Book existingBook = book.get();
 			bookRepo.delete(existingBook);
 		} else {
-			throw new BookNotFoundException("No book with id: " + id);
+			throw new BookNotFoundException("No book with id: "
+					+ id);
 		}
 	}
 }

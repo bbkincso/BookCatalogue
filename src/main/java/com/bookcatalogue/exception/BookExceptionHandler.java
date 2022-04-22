@@ -28,7 +28,8 @@ public final class BookExceptionHandler {
     public ResponseEntity<Object>
     customValidationErrorHandling(MethodArgumentNotValidException e) {
         BookException bookException = new BookException(
-                "Validation Error " + e.getBindingResult().getFieldError().getDefaultMessage(),
+                "Validation Error " + e.getBindingResult()
+                        .getFieldError().getDefaultMessage(),
                 HttpStatus.BAD_REQUEST,
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
@@ -43,6 +44,7 @@ public final class BookExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
-        return new ResponseEntity<>(bookException, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(bookException,
+                HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
