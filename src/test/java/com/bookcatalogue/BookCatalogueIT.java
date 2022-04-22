@@ -48,7 +48,7 @@ public class BookCatalogueIT {
                 "{\"id\":4,\"author\":\"J.R.R.Tolkien\",\"title\":\"The lord of the Rings\",\"isbn\":\"9780007136582\",\"isAvailable\":false}";
 
         ResponseEntity<String> myString1 =restTemplate.getForEntity("http://localhost:8082/books/4", String.class);
-        ResponseEntity<String> myString2 =restTemplate.getForEntity("http://localhost:8082/books/10", String.class);
+        ResponseEntity<String> myString2 =restTemplate.getForEntity("http://localhost:8082/books/20", String.class);
         assertEquals(HttpStatus.OK, myString1.getStatusCode());
         assertEquals(HttpStatus.NOT_FOUND, myString2.getStatusCode());
         assertEquals(book, myString1.getBody());
@@ -121,7 +121,7 @@ public class BookCatalogueIT {
     @Test
     public void deleteBookByIdTest() {
 
-        ResponseEntity<Void> response = restTemplate.exchange("http://localhost:8082/books/10",
+        ResponseEntity<Void> response = restTemplate.exchange("http://localhost:8082/books/20",
                 HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 
