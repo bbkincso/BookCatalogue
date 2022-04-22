@@ -46,7 +46,7 @@ public final class Book {
         return id;
     }
 
-    public void setId(Long i) {
+    public void setId(final Long i) {
         this.id = i;
     }
 

@@ -83,7 +83,7 @@ public final class BookService {
 	}
 
     @PostMapping("/books")
-    ResponseEntity<Book> createBook(@Valid @RequestBody Book book) {
+    ResponseEntity<Book> createBook(@Valid @RequestBody final Book book) {
         Book savedBook = bookRepo.save(book);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")
@@ -92,7 +92,7 @@ public final class BookService {
     }
 
 	@PutMapping("books/{id}")
-	public Book updateBookById(@Valid @RequestBody Book book,
+	public Book updateBookById(@Valid @RequestBody final Book book,
 							   @PathVariable("id") final Long id) {
 		Optional<Book> savedBook = bookRepo.findById(id);
 		if (savedBook.isPresent()) {
