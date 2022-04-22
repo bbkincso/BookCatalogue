@@ -89,12 +89,12 @@ public class BookCatalogueIT {
         Book book3 = new Book("", "And Another Thing", "9781401395", true);
 
         ResponseEntity<String> response1 =	restTemplate.postForEntity("http://localhost:8082/books", book1, String.class);
-//        ResponseEntity<String> response2 =	restTemplate.postForEntity("http://localhost:8082/books", book2, String.class);
-//        ResponseEntity<String> response3 =	restTemplate.postForEntity("http://localhost:8082/books", book3, String.class);
+        ResponseEntity<String> response2 =	restTemplate.postForEntity("http://localhost:8082/books", book2, String.class);
+        ResponseEntity<String> response3 =	restTemplate.postForEntity("http://localhost:8082/books", book3, String.class);
 
         assertEquals(HttpStatus.CREATED, response1.getStatusCode());
-//        assertEquals(HttpStatus.BAD_REQUEST, response2.getStatusCode());
-//        assertEquals(HttpStatus.BAD_REQUEST, response3.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, response2.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, response3.getStatusCode());
     }
 
     @Test
@@ -125,9 +125,11 @@ public class BookCatalogueIT {
                 HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 
-        ResponseEntity<Void> response1 = restTemplate.exchange("http://localhost:8082/books/7",
+        ResponseEntity<Void> response1 = restTemplate.exchange("http://localhost:8082/books/10",
                 HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
-        assertEquals(HttpStatus.OK, response1.getStatusCode());
+        ResponseEntity<Void> response2 = restTemplate.exchange("http://localhost:8082/books/9",
+                HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
+
     }
 
 }
