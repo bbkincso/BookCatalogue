@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
 public class BookExceptionHandler {
 
     @ExceptionHandler(value = {BookNotFoundException.class})
-    public ResponseEntity<Object> handleBookNotFoundException(BookNotFoundException e){
+    public ResponseEntity<Object> handleBookNotFoundException(BookNotFoundException e) {
        BookException bookException = new BookException(
                e.getMessage(),
                HttpStatus.NOT_FOUND,

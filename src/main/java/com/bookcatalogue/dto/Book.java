@@ -2,7 +2,6 @@ package com.bookcatalogue.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -10,7 +9,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="books")
+@Table(name = "books")
 @ApiModel(description = "Book model description")
 public class Book {
 
@@ -23,7 +22,8 @@ public class Book {
     @NotEmpty
     @Size(min = 2, message = "Title should be at least 2 characters.")
     private String title;
-    @Pattern(regexp = "(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})", message = "ISBN number is not correct.")
+    @Pattern(regexp = "(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})",
+            message = "ISBN number is not correct.")
     @NotEmpty
     @ApiModelProperty(notes = "Must be in a valid ISBN-10 or ISBN-13 format.")
     private String isbn;
@@ -84,12 +84,12 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", author='" + author + '\'' +
-                ", title='" + title + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", isAvailable=" + isAvailable +
-                '}';
+        return "Book{"
+                + "id=" + id
+                + ", author='" + author + '\''
+                + ", title='" + title + '\''
+                + ", isbn='" + isbn + '\''
+                + ", isAvailable=" + isAvailable
+                + '}';
     }
 }
