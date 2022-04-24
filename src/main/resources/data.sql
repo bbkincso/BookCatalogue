@@ -14,3 +14,4 @@ INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', '
 INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', 'Mostly Harmless(Hitchhiker''s Guide to the Galaxy)', '9780747532743', true);
 INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', 'The Hitchhiker''s Guide to the Galaxy', '9780804191852', true);
 -- INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', 'Mostly Harmless(Hitchhiker''s Guide to the Galaxy)', '9780747532743', true);
+-- INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', 'Mostly Harmless(Hitchhiker''s Guide to the Galaxy)', '9780747532743', true);
