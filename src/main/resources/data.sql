@@ -11,6 +11,6 @@ INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', '
 -- INSERT INTO books (author, title, isbn, is_available) VALUES ('J.K.Rowling', 'Harry Potter And the Half-Blood Prince', '9780747584681', true);
 -- INSERT INTO books (author, title, isbn, is_available) VALUES ('J.K.Rowling', 'Harry Potter and the Deathly Hallows', '9780545010221', false);
 -- INSERT INTO books (author, title, isbn, is_available) VALUES ('J.K.Rowling', 'Harry Potter and the Deathly Hallows', '9780545010221', false);
--- INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', 'Mostly Harmless(Hitchhiker''s Guide to the Galaxy)', '9780747532743', true);
 INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', 'Mostly Harmless(Hitchhiker''s Guide to the Galaxy)', '9780747532743', true);
 INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', 'The Hitchhiker''s Guide to the Galaxy', '9780804191852', true);
+-- INSERT INTO books (author, title, isbn, is_available) VALUES ('Douglas Adams', 'Mostly Harmless(Hitchhiker''s Guide to the Galaxy)', '9780747532743', true);
